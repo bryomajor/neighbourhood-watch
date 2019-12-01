@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+import datetime as dt
+
+Priority=(
+    ('Informational', 'Informational'),
+    ('High Priority', 'High Priority'),
+)
 
 # Create your models here.
 class Neighbourhood(models.Model):
@@ -24,6 +30,16 @@ class Neighbourhood(models.Model):
     def update_neighbourhood(self, neighbourhood_name):
         self.neighbourhood_name = neighbourhood_name
         self.save()
+
+
+class notifications(models.Model):
+    title = models.CharField(max_length=100)
+    notification = HTMLField()
+    priority = models.CharField(max_length=15)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE
+    )
+    post_date = models.DateTimeField(auto_now_add=True)
 
 
 class Profile(models.Model):
