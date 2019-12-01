@@ -21,6 +21,10 @@ class Neighbourhood(models.Model):
         search_results = cls.objects.filter(neighbourhood_name__icontains = search_term)
         return search_results
 
+    def update_neighbourhood(self, neighbourhood_name):
+        self.neighbourhood_name = neighbourhood_name
+        self.save()
+
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', blank = True)
