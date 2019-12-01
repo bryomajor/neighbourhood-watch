@@ -40,7 +40,7 @@ class NeighbourhoodTestClass(TestCase):
         Neighbourhood.objects.all().delete()
 
     def test_save_method(self):
-        self.kasarani.save_neighbourhood()
+        self.kasarani.create_neighbourhood()
         hood = Neighbourhood.objects.all()
         self.assertTrue(len(hood) > 0)
 
@@ -48,3 +48,8 @@ class NeighbourhoodTestClass(TestCase):
         self.kasarani.delete_neighbourhood('kasarani')
         hood = Neighbourhood.objects.all()
         self.assertTrue(len(hood) == 0)
+
+    def test_find_neighbourhood(self):
+        self.kasarani.create_neighbourhood()
+        fetched_hood = Neighbourhood.find_neighbourhood("kasarani")
+        self.assertNotEqual(fetched_hood, self.kasarani)
