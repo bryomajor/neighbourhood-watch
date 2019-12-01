@@ -35,3 +35,11 @@ class NeighbourhoodTestClass(TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.kasarani, Neighbourhood))
+
+    def tearDown(self):
+        Neighbourhood.objects.all().delete()
+
+    def test_save_method(self):
+        self.kasarani.save_neighbourhood()
+        hood = Neighbourhood.objects.all()
+        self.assertTrue(len(hood) > 0)
