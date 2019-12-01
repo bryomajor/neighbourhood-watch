@@ -43,3 +43,8 @@ class NeighbourhoodTestClass(TestCase):
         self.kasarani.save_neighbourhood()
         hood = Neighbourhood.objects.all()
         self.assertTrue(len(hood) > 0)
+
+    def test_delete_method(self):
+        self.kasarani.delete_neighbourhood('kasarani')
+        hood = Neighbourhood.objects.all()
+        self.assertTrue(len(hood) == 0)
