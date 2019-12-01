@@ -51,6 +51,13 @@ class healthservices(models.Model):
     def __str__(self):
         return self.healthservices
 
+    def save_healthservices(self):
+        self.save()
+
+    @classmethod
+    def delete_healthservices(cls, healthservices):
+        cls.objects.filter(healthservices=healthservices).delete()
+
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', blank = True)
