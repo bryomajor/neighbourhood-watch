@@ -99,7 +99,7 @@ def user_profile(request, username):
 
     return render(request, 'user_profile.html', {"profile":profile})
 
-@login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login/')
 def create_profile(request):
     current_user=request.user
     if request.method == "POST":
@@ -113,3 +113,23 @@ def create_profile(request):
     else:
         form = ProfileForm()
     return render(request, 'profile_form.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def new_blogpost(request):
+    current_user = request.user
+    profile = Profile.objects.get(username=current_user)
+
+    if request.method == 'POST':
+        form  = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            blogpost = form.save(commit = False)
+            blogpost.username = current_user
+            blogpost.neighbourhood = profile.neighbourhood
+            blogpost.save()
+
+        return HttpResponseRedirect('/blog')
+
+    else:
+        form = BlogPostForm()
+
+    return render(request, 'blogpost_form.html', {"form":form})
