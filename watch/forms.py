@@ -16,3 +16,8 @@ class BlogPostForm(forms.ModelForm):
         model = BlogPost
         exclude = ['username', 'neighbourhood']
 
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        exclude = ['owner', 'neighbourhood']
+
