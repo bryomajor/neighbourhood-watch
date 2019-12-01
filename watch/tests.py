@@ -53,3 +53,8 @@ class NeighbourhoodTestClass(TestCase):
         self.kasarani.create_neighbourhood()
         fetched_hood = Neighbourhood.find_neighbourhood("kasarani")
         self.assertNotEqual(fetched_hood, self.kasarani)
+
+    def test_update_method(self):
+        self.kasarani.create_neighbourhood()
+        edited_hood = Neighbourhood.update_neighbourhood("mwiki")
+        self.assertEqual(self.kasarani, edited_hood)
