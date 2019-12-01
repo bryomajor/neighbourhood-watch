@@ -27,3 +27,11 @@ class ProfileTestClass(TestCase):
 
     def tearDown(self):
         Profile.objects.all().delete()
+
+
+class NeighbourhoodTestClass(TestCase):
+    def setUp(self):
+        self.kasarani = Neighbourhood(neighbourhood_name = 'kasarani')
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.kasarani, Neighbourhood))
