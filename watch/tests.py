@@ -17,10 +17,7 @@ class ProfileTestClass(TestCase):
         self.new_neigh = Neighbourhood(neighbourhood_name = "kasarani")
         self.new_neigh.save()
 
-        self.new_profile = Profile(user = self.new_user, neighbourhood = self.new_neigh)
-
-    def tearDown(self):
-        Profile.objects.all().delete()
+        self.new_profile = Profile(username = self.new_user, neighbourhood = self.new_neigh, name = "bilal rock", email = "bilal@gmail.com", bio = "I see myself here")
 
     def test_instance(self):
         '''
@@ -28,6 +25,5 @@ class ProfileTestClass(TestCase):
         '''
         self.assertTrue(isinstance(self.new_profile, Profile))
 
-    def test_save_method(self):
-        profile = Profile.objects.all()
-        self.assertTrue(len(profile) > 0)
+    def tearDown(self):
+        Profile.objects.all().delete()
