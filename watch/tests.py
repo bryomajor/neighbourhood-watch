@@ -58,3 +58,14 @@ class NeighbourhoodTestClass(TestCase):
         self.kasarani.create_neighbourhood()
         edited_hood = Neighbourhood.update_neighbourhood("mwiki")
         self.assertEqual(self.kasarani, edited_hood)
+
+
+class healthservicesTestClass(TestCase):
+    def setUp(self):
+        self.optical = healthservices(healthservices = 'optical')
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.optical, healthservices))
+
+    def tearDown(self):
+        healthservices.objects.all().delete()
