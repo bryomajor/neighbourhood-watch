@@ -16,6 +16,11 @@ class Neighbourhood(models.Model):
     def delete_neighbourhood(cls, neighbourhood_name):
         cls.objects.filter(neighbourhood_name=neighbourhood_name).delete()
 
+    @classmethod
+    def find_neighbourhood(cls, search_term):
+        search_results = cls.objects.filter(neighbourhood_name__icontains = search_term)
+        return search_results
+
 
 class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', blank = True)
