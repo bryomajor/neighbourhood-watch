@@ -4,7 +4,10 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-4 mx-auto mt-5">
+        <div class="col-md-4 mx-auto mt-5 bg-light pt-5 pb-3">
+            <h2 class="text-center">Neighbourhood Watch</h2>
+            <hr>
+            <p class="text-center">Sign in to continue</p>
             {% if form.errors %}
             <p>Password or Username is incorrect</p>
             {% endif %}
@@ -15,7 +18,7 @@
                         {% csrf_token %}
                         {% bootstrap_form form %}
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Log in">
+                            <input type="submit" class="btn btn-warning" value="Log in">
                         </div>
                         <input type="hidden" name="next" value="/">
                     </form>
