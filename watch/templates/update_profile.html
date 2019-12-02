@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-4 mx-auto mt-5">
+        <div class="col-md-4 mx-auto mt-5 bg-light pt-5 pb-3">
         {{form.media}}
 
         {% if form.errors %}
@@ -17,7 +17,7 @@
             <div class="panel-body">
 
                 <div class="text-center">
-                    <h3>Create your profile</h3>
+                    <h3>Update your profile</h3>
                     <form action="{% url 'update-profile' %}" method="post" enctype="multipart/form-data">
 
                         {% csrf_token%}
