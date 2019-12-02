@@ -36,6 +36,7 @@ ACCOUNT_ACTIVATION_DAYS=7
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+MODE=config("MODE", default="dev")
 DEBUG = config('DEBUG',default=False,cast=bool)
 
 # development
@@ -47,7 +48,7 @@ if config('MODE')=="dev":
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
-           'PORT': '5432',
+           'PORT': '',
        }
 
    }
